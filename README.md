@@ -23,10 +23,10 @@ You can add aliases by:
 In addition, you can search and edit aliases using your default editor.
 
 ### Usage
-
+```
 aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
         [-f FIND] [--list] [--new] [-t [PICKUP]]
-
+```
 
 ### Optional Arguments
 
@@ -53,9 +53,10 @@ If you need a single host but more robust tool there are alternatives out there 
 # Dependencies
 ## Python < 2.7
 If your host is running a Python version older than 2.7 you will need to
-install arparse.
+install *arparse*.
 
-- arparse, https://pypi.python.org/pypi/argparse
+- arparse: https://pypi.python.org/pypi/argparse
 
 # See
-- https://www.tldp.org/LDP/abs/html/aliases.htmlusage
+
+- Using Terminal Aliases: https://www.tldp.org/LDP/abs/html/aliases.htmlusage
