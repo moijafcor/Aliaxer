@@ -16,6 +16,7 @@ You can also ignore files based on name or extension that you specify in the con
 You can also source aliases files located in remote hosts or in the Internet, ideal for system administration of a large number of hosts, Docker's containers deployments, technical support, etc.
 
 You can add aliases by:
+
 - Using a wizard
 - Piping up the stdout from other commands or the Terminal history
 - Inline
@@ -23,13 +24,13 @@ You can add aliases by:
 In addition, you can search and edit aliases using your default editor.
 
 ### Usage
-```
+```bash
 aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
         [-f FIND] [--list] [--new] [-t [PICKUP]]
 ```
 
 ### Optional Arguments
-
+```bash
   -h, --help            show this help message and exit
   -a APPENDER APPENDER  Appends submitted command as a new alias onto the
                         Default alias file. Usage: aliaxer -a < alias > <
@@ -47,8 +48,15 @@ aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
   -t [PICKUP]           Makes an alias with a command piped up from Terminal's
                         stdout using the provided name. Usage: < your-
                         terminal-stdout > | aliaxer -t < alias-name >
+```
+If you need a single host but more robust tool there are alternatives out there such as [Bash-it](https://github.com/Bash-it/bash-it) and others
 
-If you need a single host but more robust tool there are alternatives out there such as [Bash-it](https://github.com/Bash-it/bash-it) and others.
+# Set Up
+
+- Clone or fork/clone or download this repo as ZIP
+- Create the directory to contain the aliases files and grab its path. You can use the included 'aliases' directory but is not recommended because its ideal to have versioning for the aliases themselves.
+- Fill in the config.ini settings: 
+ 
 
 # Dependencies
 ## Python < 2.7
