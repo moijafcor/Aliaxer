@@ -109,6 +109,9 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+#Visual Studio Code
+.vscode
+
 #Aliaxer
 aliases/*
 config.ini
