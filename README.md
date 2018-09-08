@@ -1,7 +1,7 @@
 #Aliaxer
 
-[Python 2.7](https://img.shields.io/badge/Python%202.7--brightgreen.svg)
-[Python 3+](https://img.shields.io/badge/Python%203%2B--brightgreen.svg)
+![Python 2.7](https://img.shields.io/badge/Python%202.7--brightgreen.svg)
+![Python 3+](https://img.shields.io/badge/Python%203%2B--brightgreen.svg)
 
 Basic Manager for Terminal Aliases.
     
