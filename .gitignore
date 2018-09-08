@@ -111,3 +111,4 @@ dmypy.json
 
 #Aliaxer
 aliases/*
+config.ini

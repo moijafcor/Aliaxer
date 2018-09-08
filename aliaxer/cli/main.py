@@ -7,34 +7,57 @@ from aliaxer import aliaxer as ax
 def controller(root_path=None):
     """ Application for the Terminal """
     
-    helpdescription = """Basic Terminal Alias File Importer and Aliases Manager.
+    helpdescription = """Basic Manager for Terminal Aliases.
     
-    Discovers and sources in the Terminal all files inside the configured directory and remote hosts via curl.
+    Keep aliases in separate files grouped by some organizational criteria 
+    in any accessible directory in your host allowing you to version control
+    or sync them among hosts.
     
-    It features options for appending new commands:
+    This app helps you create and manipulate aliases sourcing those files 
+    that you want available in the hosts. You can also ignore files based 
+    on name or extension that you specify in the config.ini.
+    
+    You can also source aliases files located in remote hosts or the Internet.
+    
+    You can add aliases by:
     - Using a wizard
-    - Command line stdin
+    - Piping up the stdout
     - Inline
 
-    In addition, provides the features of file editing (using the OS default editor) and finding an alias for editing.
+    In addition, you can search and edit aliases using your default 
+    editor.
     """
-    parser = argparse.ArgumentParser(description=helpdescription, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('-a', dest='appender', default=None, type=str, nargs=2,
-                    help='Appends submitted command as a new alias in the Default alias file. Usage: aliaxer.py -a < alias > < command >.')
+    parser = argparse.ArgumentParser(prog='aliaxer',
+        description=helpdescription,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('-a', dest='appender', default=None,
+        type=str, nargs=2,
+        help='Appends submitted command as a new alias'
+        ' onto the Default alias file.'
+        ' Usage: aliaxer -a < alias > < command >.')
     parser.add_argument('--append', action="store_true", 
-                    help='Summon a wizard to append an alias.')
+        help='Summons a wizard to append an alias to an aliases file.')
     parser.add_argument('--compile', action="store_true", 
-                    help='Compiles the sourcing file for the Terminal.')
+        help='Compiles the sourcing file for the Terminal.')
     parser.add_argument('--edit', action="store_true", 
-                    help='Brings a wizard to select a file to be edited with system default editor. You must --source aliaxer manually.')
+        help='Brings up a wizard to select a file to be edited'
+        ' with system default editor.')
     parser.add_argument('-f', dest='find', default=None, type=str, nargs=1,
-                    help='Search in the files for the requested term.')
-    parser.add_argument('--list', action="store_true", help='Lists all alias files.')
-    parser.add_argument('--new', action="store_true", help='Add a new alias and creates a new aliases file using a wizard.')
-    parser.add_argument('-t', dest='pickup', default=None, type=str, nargs='?',
-                    help='Makes an alias with command _read from stdin using the provided name.')
+        help='Searchs in the aliases files for the requested term. '
+        'Usage aliaxer -f < string-to-lookup >')
+    parser.add_argument('--list', action="store_true", 
+        help='Lists all aliases files.')
+    parser.add_argument('--new', action="store_true", 
+        help='Creates a new aliases file and adds in a new'
+        ' alias using a wizard.')
+    parser.add_argument('-t', dest='pickup', default=None, type=str, 
+        nargs='?', help='Makes an alias with a command'
+        ' piped up from Terminal\'s stdout using the'
+        ' provided name. Usage: '
+        '< your-terminal-stdout > | aliaxer -t < alias-name >')
 
     args = parser.parse_args()
+    ax._check_config()
 
     try:
         # --append
@@ -73,7 +96,8 @@ def controller(root_path=None):
             sys.exit(0)
         # --new
         elif args.new :
-            ax._new_aliases_file()
+            nf = ax._new_aliases_file()
+            ax._append_alias(nf)
             ax._sourcer(root_path)
             sys.exit(0)
         # -t
