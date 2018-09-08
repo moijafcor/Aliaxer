@@ -55,8 +55,36 @@ If you need a single host but more robust tool there are alternatives out there 
 
 - Clone or fork/clone or download this repo as ZIP
 - Create the directory to contain the aliases files and grab its path. You can use the included 'aliases' directory but is not recommended because its ideal to have versioning for the aliases themselves.
-- Fill in the config.ini settings: 
+- Determine which file is your terminal sourcing for aliases. In Bash usually is _~/.bashrc_, _~/.zshrc_ for Zsh where that file is sourced. You may need to uncommend the lines with the import.
+- Fill in the _config.ini_ settings: *sourced_aliases_path* is the path to the file your terminal import aliases from as seen on previous step; *aliases_dir* is the path to the directory that will contain your aliases files. The rest of the settings IMHO are optional but please take a look at them.
+- Run _run.py_ script for the first time using the *--append* switch, create your first alias and verify that every works.
+- Optionally you can create a _remotes_ file. Please see the Remotes section for instructions
+
+### Using Remotes
+
+You can use remotes files (either in your network or on the Internet) to source your aliases from. This is particularly useful when you have to administer a fleet of drone servers whit quasi-identical setups or running same tools; also for operating Docker containers, Arduinos, etc.
  
+In to have your remotes sourced you need to:
+
+- Create a file named ```remotes``` inside your aliases file directory.
+- Paste the URL onto the file. If you are sourcing more than one remote url add each one on its own line.
+
+For example:
+
+```txt
+https://raw.githubusercontent.com/moijafcor/terminal-aliases/master/common
+https://raw.githubusercontent.com/moijafcor/terminal-aliases/master/git-flow
+```
+
+I maintain [here a repository](https://github.com/moijafcor/terminal-aliases) of commonly used aliases that you can play with.
+
+Please beware of the performance consequences on having 'too many' remotes sourced at once because of the lag added by ```curl``` can be noticeable on the loading time of your terminals.
+
+#### Security
+
+*Avoid using* remote sources of aliases that you don't control yourself or are not properly vetted by you. 
+
+You don't want any command running on your terminal that you are not certain of what it does.
 
 # Dependencies
 ## Python < 2.7
