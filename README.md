@@ -7,11 +7,11 @@ Basic Manager for Terminal Aliases.
     
 A very small app written in Python to help you with keeping command aliases organized in files located in any directory in your host. 
 
-By storing all your aliases files independent from your Terminal's *rc, ~/.profile or ~/.aliases files you can use version control and/or sync them among hosts.
+By storing all your aliases files independent from your Terminal's _\*rc_, *~/.profile* or *~/.aliases* files you can use version control and/or sync them among hosts.
 
 This app helps you create, manipulate and find aliases, sourcing only the files containing the aliases that you want available in that particular hosts. 
 
-You can also ignore files based on name or extension that you specify in the config.ini.
+You can also ignore files based on name or extension that you specify in the *config.ini*.
 
 You can also source aliases files located in remote hosts or in the Internet, ideal for system administration of a large number of hosts, Docker's containers deployments, technical support, etc.
 
@@ -58,7 +58,7 @@ If you need a single host but more robust tool there are alternatives out there 
 - Determine which file is your terminal sourcing for aliases. In Bash usually is _~/.bashrc_, _~/.zshrc_ for Zsh where that file is sourced. You may need to uncommend the lines with the import.
 - Fill in the _config.ini_ settings: *sourced_aliases_path* is the path to the file your terminal import aliases from as seen on previous step; *aliases_dir* is the path to the directory that will contain your aliases files. The rest of the settings IMHO are optional but please take a look at them.
 - Run _run.py_ script for the first time using the *--append* switch, create your first alias and verify that every works.
-- Optionally you can create a _remotes_ file. Please see the Remotes section for instructions
+- Optionally, you can create a _remotes_ file for sourcing aliases from remotes files. Please see the *Using Remotes section* for instructions.
 
 ### Using Remotes
 
