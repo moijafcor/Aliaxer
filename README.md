@@ -1,4 +1,4 @@
-#Aliaxer
+# Aliaxer
 
 ![Python 2.7](https://img.shields.io/badge/Python%202.7--brightgreen.svg)
 ![Python 3+](https://img.shields.io/badge/Python%203%2B--brightgreen.svg)
@@ -28,7 +28,7 @@ aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
         [-f FIND] [--list] [--new] [-t [PICKUP]]
 
 
-###Optional arguments
+### Optional Arguments
 
   -h, --help            show this help message and exit
   -a APPENDER APPENDER  Appends submitted command as a new alias onto the
