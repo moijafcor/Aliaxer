@@ -99,7 +99,7 @@ def _check_config():
     cf = here + '/../config.ini'
     m = 'Missing config.ini file or parameter not provided.'
     if not os.path.exists(cf):
-        raise FileNotFoundError(m)
+        raise Exception(m)
     return
 
 def _edit_file():
@@ -417,6 +417,17 @@ def _sourcer(root_path=None):
     except Exception as exc:
         logging.warning(str(exc))
         raise
+
+def _version(app='library'):
+    """ Returns version numbers """
+    here = os.path.abspath(os.path.dirname(__file__))
+    vf = here + '/version.ini'
+    m = 'Missing version.ini file or parameter not provided.'
+    if not os.path.exists(vf):
+        raise Exception(m)
+    config = ConfigParser()
+    config.read(vf)
+    return config.get('sc', app)
 
 def _writer(file_path, payload):
     """ Writes to a file preserving its old content. 

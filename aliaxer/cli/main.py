@@ -107,6 +107,8 @@ def controller(root_path=None):
             sys.exit(0)
         else:
             ax._quickstart()
+            print('Lib V. ' + ax._version('library'))
+            print('CLI V. ' + ax._version('cli'))
             sys.exit(0)
     except Exception as exc:
         template = "{0:s} Aborting.".format(str(exc))
