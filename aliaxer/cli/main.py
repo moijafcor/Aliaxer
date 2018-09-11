@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import sys
 import argparse
-import logging
 from aliaxer import aliaxer as ax
 
 def controller(root_path=None):
@@ -39,8 +38,10 @@ def controller(root_path=None):
         help='Summons a wizard to append an alias to an aliases file.')
     parser.add_argument('--compile', action="store_true", 
         help='Compiles the sourcing file for the Terminal.')
+    parser.add_argument('--configure', action="store_true", 
+        help='Opens up the config.ini file for editing.')
     parser.add_argument('--edit', action="store_true", 
-        help='Brings up a wizard to select a file to be edited'
+        help='Brings up a wizard to select a file to be edited'\
         ' with system default editor.')
     parser.add_argument('-f', dest='find', default=None, type=str, nargs=1,
         help='Searchs in the aliases files for the requested term. '
@@ -48,18 +49,22 @@ def controller(root_path=None):
     parser.add_argument('--list', action="store_true", 
         help='Lists all aliases files.')
     parser.add_argument('--new', action="store_true", 
-        help='Creates a new aliases file and adds in a new'
+        help='Creates a new aliases file and adds in a new'\
         ' alias using a wizard.')
+    parser.add_argument('--setup', action="store_true", 
+        help='Configure Aliaxer for the first time or reset configuration.')
     parser.add_argument('-t', dest='pickup', default=None, type=str, 
         nargs='?', help='Makes an alias with a command'
         ' piped up from Terminal\'s stdout using the'
         ' provided name. Usage: '
         '< your-terminal-stdout > | aliaxer -t < alias-name >')
 
-    args = parser.parse_args()
-    ax._check_config()
-
     try:
+        args = parser.parse_args()
+        if args.setup or args.configure:
+            pass
+        else:
+            ax._check_config()
         # --append
         if args.append :
             ax._append_alias()
@@ -73,6 +78,10 @@ def controller(root_path=None):
         # --compile
         elif args.compile :
             ax._sourcer(root_path)
+            sys.exit(0)
+        # --configure
+        elif args.configure :
+            ax._configure()
             sys.exit(0)
         # --edit
         elif args.edit :
@@ -105,12 +114,17 @@ def controller(root_path=None):
             ax._pickup(args.pickup)
             ax._sourcer(root_path)
             sys.exit(0)
+        # --setup
+        elif args.setup :
+            ax._setup()
+            ax._configure()
+            sys.exit(0)
         else:
             ax._quickstart()
             print('Lib V. ' + ax._version('library'))
             print('CLI V. ' + ax._version('cli'))
             sys.exit(0)
-    except Exception as exc:
-        template = "{0:s} Aborting.".format(str(exc))
-        logging.warning( template )
+    except Exception as e:
+        template = "{0:s} Aborting.".format(str(e))
+        ax._logger( template )
         sys.exit(1)
