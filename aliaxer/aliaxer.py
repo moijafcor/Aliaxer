@@ -1,20 +1,21 @@
 try:
-    import sys
-    import os
-    from configparser import ConfigParser
     import datetime
-    import re
-    import select
-    from shutil import copyfile
-    import webbrowser
     import logging
     import logging.config
     import logging.handlers
+    import os
+    import re
+    import select
+    from shutil import copyfile
+    import sys
+    import webbrowser
+    #configparser Has to be last because in 2.7
+    #it would rise an Exception bypassing any other
+    #imports further down it
+    from configparser import ConfigParser 
 except ImportError as e:
     # Python < 3.0
-    print(e)
     from ConfigParser import ConfigParser
-
 
 def _append_alias(appendto=None):
     """ Appends an alias using a wizard to help out creating the alias. 
@@ -296,9 +297,10 @@ def _logger(msg, level='WARNING'):
     
     Writes to log file only on ERROR level logs.
     """
+    logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger("Aliaxer")
+
     if level is 'INFO':
-        logging.basicConfig()
         logger.setLevel(logging.INFO)
         logger.info(msg)
     elif level is 'ERROR':
@@ -310,7 +312,6 @@ def _logger(msg, level='WARNING'):
         logger.addHandler(fh)
         logger.error(msg)
     else:
-        logging.basicConfig()
         logger.setLevel(logging.WARNING)
         logger.warning(msg)
     return
