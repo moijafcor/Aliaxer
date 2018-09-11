@@ -92,6 +92,14 @@ Please beware of the performance consequences on having 'too many' remotes sourc
 
 You don't want any command running on your terminal that you are not certain of what it does.
 
+# Pro Tip
+
+- If you need to see an alias syntax or to find out the appropriate one for a task, use the shell's build in alias listing tool:
+
+```bash
+alias | grep < keyword >
+```
+
 # Best Practices
 
 When scripting your aliases first consider if a [shell function](https://www.gnu.org/software/bash/manual/bash.html#Shell-Functions) is better suited for your purposes instead of an alias because, as stated on the [Bash Manual](https://www.gnu.org/software/bash/manual/bash.html#Aliases), they are a much more powerful instrument:
@@ -128,3 +136,5 @@ A robust tool for a single host [Bash-it](https://github.com/Bash-it/bash-it).
 # See
 
 - Using Terminal Aliases: https://www.tldp.org/LDP/abs/html/aliases.htmlusage
+- Bash Reference Manual, Aliases: https://www.gnu.org/software/bash/manual/bash.html#Aliases
+- Bash Reference Manual, Shell Functions: https://www.gnu.org/software/bash/manual/bash.html#Shell-Functions
