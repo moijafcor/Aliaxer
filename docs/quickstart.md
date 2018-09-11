@@ -2,7 +2,7 @@ usage: aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile]
                [--configure] [--edit] [-f FIND] [--list] [--new] [--setup]
                [-t [PICKUP]]
 
-Basic Manager for Terminal Aliases.
+Basic Manager for Terminal Aliases and Functions.
     
     Keep aliases in separate files grouped by some organizational criteria 
     in any accessible directory in your host allowing you to version control

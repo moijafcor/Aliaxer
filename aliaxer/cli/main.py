@@ -6,7 +6,7 @@ from aliaxer import aliaxer as ax
 def controller(root_path=None):
     """ Application for the Terminal """
     
-    helpdescription = """Basic Manager for Terminal Aliases.
+    helpdescription = """Basic Manager for Terminal Aliases and Functions.
     
     Keep aliases in separate files grouped by some organizational criteria 
     in any accessible directory in your host allowing you to version control

@@ -66,6 +66,7 @@ def _append_alias(appendto=None):
     else:
         sqts = "'"
 
+    alias_name = _slugify(alias_name)
     if is_remote:
         template_alias = "{0:s}\n".format(alias_command)
     else:
@@ -93,6 +94,7 @@ def _appender_alias(arguments):
         sqts = '"'
     else:
         sqts = "'"
+    alias_name = _slugify(alias_name)
     payload = "alias {0:s}={2:s}{1:s}{2:s}\n".format(
         alias_name, alias_command, sqts)
     return _writer(_get_path_default_file(), payload)
@@ -462,8 +464,9 @@ def _sourcer(root_path=None):
                     "%b%d%Y%H")
                 os.rename(sfpath, sfpath + '-' + now)
             with open(sfpath, "w+") as fh:
-                app_alias_template = "alias aliaxer='{0:s}/run.py'\n".format(
-                    root_path)
+                app_alias_template = "# Basic Manager for Terminal Aliases" \
+                            " and Shell Functions.\n" \
+                            "alias aliaxer='{0:s}/run.py'\n".format(root_path)
                 fh.write(app_alias_template)
                 for af in afs:
                     if 'remotes' in af:

@@ -3,15 +3,15 @@
 ![Python 2.7](https://img.shields.io/badge/Python%202.7--brightgreen.svg)
 ![Python 3+](https://img.shields.io/badge/Python%203%2B--brightgreen.svg)
 
-Basic Manager for Terminal Aliases.
+Basic Manager for Terminal Aliases and Shell Functions.
     
-A very small app written in Python to help you with keeping command aliases organized in files located in any directory in your host. 
+A very small app written in Python to help you with keeping command aliases and shell functions organized in files located in any directory in your host. 
 
 By storing all your aliases files independent from your Terminal's ```*rc```, ```~/.profile``` or ```~/.aliases``` files you can use version control and/or sync them among hosts.
 
 This app helps you create, manipulate and find aliases, sourcing only the files containing the aliases that you want available in that particular hosts. 
 
-You can also ignore files based on name or extension that you specify in the ```config.ini```.
+You can ignore files based on name or extension that you specify in the ```config.ini```.
 
 You can also source aliases files located in remote hosts or in the Internet, ideal for system administration of a large number of hosts, Docker's containers deployments, technical support, etc.
 
@@ -91,6 +91,12 @@ Please beware of the performance consequences on having 'too many' remotes sourc
 *Avoid using* remote sources of aliases that you don't control yourself or are not properly vetted by you. 
 
 You don't want any command running on your terminal that you are not certain of what it does.
+
+# Best Practices
+
+When scripting your aliases first consider if a (shell function)[https://www.gnu.org/software/bash/manual/bash.html#Shell-Functions] is better suited for your purposes instead of an alias because, as stated on the (Bash Manual)[https://www.gnu.org/software/bash/manual/bash.html#Aliases], they are a much more powerful instrument:
+
+> For almost every purpose, shell functions are preferred over aliases.
 
 # Dependencies
 ## Python < 2.7
