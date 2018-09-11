@@ -7,11 +7,11 @@ Basic Manager for Terminal Aliases.
     
 A very small app written in Python to help you with keeping command aliases organized in files located in any directory in your host. 
 
-By storing all your aliases files independent from your Terminal's _\*rc_, *~/.profile* or *~/.aliases* files you can use version control and/or sync them among hosts.
+By storing all your aliases files independent from your Terminal's ```*rc```, ```~/.profile``` or ```~/.aliases``` files you can use version control and/or sync them among hosts.
 
 This app helps you create, manipulate and find aliases, sourcing only the files containing the aliases that you want available in that particular hosts. 
 
-You can also ignore files based on name or extension that you specify in the *config.ini*.
+You can also ignore files based on name or extension that you specify in the ```config.ini```.
 
 You can also source aliases files located in remote hosts or in the Internet, ideal for system administration of a large number of hosts, Docker's containers deployments, technical support, etc.
 
@@ -58,22 +58,22 @@ usage: aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile]
 # Set Up
 
 - Clone or fork/clone or download this repo as ZIP
-- Create the directory to contain the aliases files and grab its path. You can use the included 'aliases' directory but is not recommended because its ideal to have versioning for the aliases themselves.
-- Determine which file is your terminal sourcing for aliases. In Bash usually is _~/.bashrc_, _~/.zshrc_ for Zsh where that file is sourced. You may need to uncommend the lines with the import.
-- Make _run.py_ executable by the system: _chmod u+x run.py_
-- Run _run.py_ script for the first time using the *--setup* switch.
-- Close and re-open your terminal or re-source your _*rc_ file from the previous step so you can use the app. For better results, closing the Terminal session in order to get a fresh one is better in order to avoid possible alias collisions because re-sourcing does not perform unaliasing.
-- The _aliaxer_ command will then be available for you to command Aliaxer. Check its help _aliaxer -h_ or just _aliaxer_ to learn about all available options.
-- Optionally, you can create a _remotes_ file for sourcing aliases from remotes files. Please see the *Using Remotes section* for instructions.
+- Create the directory to contain the aliases files and grab its path.
+- Determine which file is your terminal sourcing for aliases. In Bash usually is ```~/.bashrc```, ```~/.zshrc``` for Zsh where that file is sourced. You may need to uncommend the lines with the import.
+- Make ```run.py``` executable by the system: ```chmod u+x run.py```
+- Run ```run.py``` script for the first time using the ```--setup``` switch.
+- Close and re-open your Terminal or re-source your ```*rc``` file from the previous step so you can use the app. For better results, closing the Terminal session to get a fresh one is better because re-sourcing does not perform unaliasing.
+- The ```aliaxer``` command will then be available for you to summon Aliaxer. Check out its help ```aliaxer -h``` or just ```aliaxer``` to learn about all available options.
+- Optionally, you can create a ```remotes``` file for sourcing aliases from remotes files. Please see the *Using Remotes section* for instructions.
 
 ### Using Remotes
 
-You can use remotes files (either in your network or on the Internet) to source your aliases from. This is particularly useful when you have to administer a fleet of drone servers whit quasi-identical setups or running same tools; also for operating Docker containers, Arduinos, etc.
+You can use remotes files (either in your network or on the Internet) to source your aliases from. This is particularly useful when you have to administer a fleet of drone servers with quasi-identical setups or running same tools; also for operating Docker containers, IoT, Arduinos, etc.
  
-In to have your remotes sourced you need to:
+In order to have your remotes sourced you need to:
 
 - Create a file named ```remotes``` inside your aliases file directory.
-- Paste the URL onto the file. If you are sourcing more than one remote url add each one on its own line.
+- Paste the URL of your aliases onto the file. If you are sourcing more than one remote url add each one on its own line.
 
 For example:
 
@@ -84,7 +84,7 @@ https://raw.githubusercontent.com/moijafcor/terminal-aliases/master/git-flow
 
 I maintain [here a repository](https://github.com/moijafcor/terminal-aliases) of commonly used aliases that you can play with.
 
-Please beware of the performance consequences on having 'too many' remotes sourced at once because of the lag added by ```curl``` can be noticeable on the loading time of your terminals.
+Please beware of the performance consequences on having 'too many' remotes sourced at once, because the lag added by ```curl``` can be noticeable on the loading time of your Terminals.
 
 #### Security
 
