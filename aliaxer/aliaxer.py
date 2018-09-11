@@ -9,13 +9,12 @@ try:
     from shutil import copyfile
     import sys
     import webbrowser
-    #configparser Has to be last because in 2.7
-    #it would rise an Exception bypassing any other
-    #imports further down it
-    from configparser import ConfigParser 
+    if sys.version_info[0] == 3:
+        from configparser import ConfigParser
+    else:
+        from ConfigParser import ConfigParser
 except ImportError as e:
-    # Python < 3.0
-    from ConfigParser import ConfigParser
+    raise Exception(e)
 
 def _append_alias(appendto=None):
     """ Appends an alias using a wizard to help out creating the alias. 

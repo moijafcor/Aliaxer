@@ -1,5 +1,6 @@
-usage: aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
-               [-f FIND] [--list] [--new] [-t [PICKUP]]
+usage: aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile]
+               [--configure] [--edit] [-f FIND] [--list] [--new] [--setup]
+               [-t [PICKUP]]
 
 Basic Manager for Terminal Aliases.
     
@@ -30,6 +31,7 @@ optional arguments:
   --append              Summons a wizard to append an alias to an aliases
                         file.
   --compile             Compiles the sourcing file for the Terminal.
+  --configure           Opens up the config.ini file for editing.
   --edit                Brings up a wizard to select a file to be edited with
                         system default editor.
   -f FIND               Searchs in the aliases files for the requested term.
@@ -37,6 +39,8 @@ optional arguments:
   --list                Lists all aliases files.
   --new                 Creates a new aliases file and adds in a new alias
                         using a wizard.
+  --setup               Configure Aliaxer for the first time or reset
+                        configuration.
   -t [PICKUP]           Makes an alias with a command piped up from Terminal's
                         stdout using the provided name. Usage: < your-
                         terminal-stdout > | aliaxer -t < alias-name >

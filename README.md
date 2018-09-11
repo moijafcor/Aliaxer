@@ -25,8 +25,9 @@ In addition, you can search and edit aliases using your default editor.
 
 ### Usage
 ```bash
-aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
-        [-f FIND] [--list] [--new] [-t [PICKUP]]
+usage: aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile]
+               [--configure] [--edit] [-f FIND] [--list] [--new] [--setup]
+               [-t [PICKUP]]
 ```
 
 ### Optional Arguments
@@ -38,6 +39,7 @@ aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
   --append              Summons a wizard to append an alias to an aliases
                         file.
   --compile             Compiles the sourcing file for the Terminal.
+  --configure           Opens up the config.ini file for editing.
   --edit                Brings up a wizard to select a file to be edited with
                         system default editor.
   -f FIND               Searchs in the aliases files for the requested term.
@@ -45,19 +47,23 @@ aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile] [--edit]
   --list                Lists all aliases files.
   --new                 Creates a new aliases file and adds in a new alias
                         using a wizard.
+  --setup               Configure Aliaxer for the first time or reset
+                        configuration.
   -t [PICKUP]           Makes an alias with a command piped up from Terminal's
                         stdout using the provided name. Usage: < your-
                         terminal-stdout > | aliaxer -t < alias-name >
+
 ```
-If you need a single host but more robust tool there are alternatives out there such as [Bash-it](https://github.com/Bash-it/bash-it) and others
 
 # Set Up
 
 - Clone or fork/clone or download this repo as ZIP
 - Create the directory to contain the aliases files and grab its path. You can use the included 'aliases' directory but is not recommended because its ideal to have versioning for the aliases themselves.
 - Determine which file is your terminal sourcing for aliases. In Bash usually is _~/.bashrc_, _~/.zshrc_ for Zsh where that file is sourced. You may need to uncommend the lines with the import.
-- Fill in the _config.ini_ settings: *sourced_aliases_path* is the path to the file your terminal import aliases from as seen on previous step; *aliases_dir* is the path to the directory that will contain your aliases files. The rest of the settings IMHO are optional but please take a look at them.
-- Run _run.py_ script for the first time using the *--append* switch, create your first alias and verify that every works.
+- Make _run.py_ executable by the system: _chmod u+x run.py_
+- Run _run.py_ script for the first time using the *--setup* switch.
+- Close and re-open your terminal or re-source your _*rc_ file from the previous step so you can use the app. For better results, closing the Terminal session in order to get a fresh one is better in order to avoid possible alias collisions because re-sourcing does not perform unaliasing.
+- The _aliaxer_ command will then be available for you to command Aliaxer. Check its help _aliaxer -h_ or just _aliaxer_ to learn about all available options.
 - Optionally, you can create a _remotes_ file for sourcing aliases from remotes files. Please see the *Using Remotes section* for instructions.
 
 ### Using Remotes
@@ -92,6 +98,26 @@ If your host is running a Python version older than 2.7 you will need to
 install *arparse*.
 
 - arparse: https://pypi.python.org/pypi/argparse
+
+# Alternatives
+
+## The "Classic" Way
+
+For decades I just used a directory on my _*rc_ file for sourcing all files from there, like this:
+
+```bash
+if [ -f ~/path/to/directory ]; then
+    . ~/path/to/directory/*
+fi
+```
+The problem with this set up is that is not scalable to dozens of boxes, Docker containers and IoT devices; the whole thing is a manual process in order to comment out or remove aliases collections discretionally in function of the box. 
+
+For example, just consider the simple case where your Cloud vendor has re-built a VM in your fleet changing its public IP Address; you will have to propagate the change in a lot of places and -believe me- you will forget to update a bunch of them and stuff will start breaking silently.
+
+In a fleet scenario you need a tool that allows you to source aliases discretionally per host from a single pool of aliases, create aliases on the fly (because a job done in one box surely will have to be done in another drone on your fleet -as hopefully you are deploying inside Availability Sets-) and, among other features, helps you with the offloading of your memory banks in your mind by finding the command that you may need in a given circunstance.
+
+## Bash-it
+A robust tool for a single host [Bash-it](https://github.com/Bash-it/bash-it).
 
 # See
 
