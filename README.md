@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/moijafcor/terminal-aliases/master/common
 https://raw.githubusercontent.com/moijafcor/terminal-aliases/master/git-flow
 ```
 
-I maintain [here a repository](https://github.com/moijafcor/terminal-aliases) of commonly used aliases that you can play with.
+There is a ancilliary [repository](https://github.com/moijafcor/terminal-aliases) of commonly used aliases that you can play with.
 
 Please beware of the performance consequences on having 'too many' remotes sourced at once, because the lag added by ```curl``` can be noticeable on the loading time of your Terminals.
 
@@ -94,7 +94,7 @@ You don't want any command running on your terminal that you are not certain of 
 
 # Best Practices
 
-When scripting your aliases first consider if a (shell function)[https://www.gnu.org/software/bash/manual/bash.html#Shell-Functions] is better suited for your purposes instead of an alias because, as stated on the (Bash Manual)[https://www.gnu.org/software/bash/manual/bash.html#Aliases], they are a much more powerful instrument:
+When scripting your aliases first consider if a [shell function](https://www.gnu.org/software/bash/manual/bash.html#Shell-Functions) is better suited for your purposes instead of an alias because, as stated on the [Bash Manual](https://www.gnu.org/software/bash/manual/bash.html#Aliases), they are a much more powerful instrument:
 
 > For almost every purpose, shell functions are preferred over aliases.
 
@@ -109,7 +109,7 @@ install *arparse*.
 
 ## The "Classic" Way
 
-For decades I just used a directory on my _*rc_ file for sourcing all files from there, like this:
+Is not foreing practice to use a directory on _*rc_ file for sourcing all files from there, like this:
 
 ```bash
 if [ -f ~/path/to/directory ]; then
