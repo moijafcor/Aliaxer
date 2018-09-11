@@ -390,20 +390,20 @@ def _scouer(dir_path, name_only=False, quiet=False):
         if 'remotes' in filename:
             if _get_config('ignore', 'remotes'):
                 if not quiet:
-                    _logger('aliaxer ignoring file ' + filename)
+                    _logger('Ignoring file ' + filename)
                 continue
         if filename.startswith("."):
             continue
         if file_extension in ignore_f_ext.split(","):
             if not name_only:
                 if not quiet:
-                    _logger('aliaxer ignoring file '
+                    _logger('Ignoring file '
                                     + filename + file_extension)
             continue
         if filename+file_extension in ignore_file.split(","):
             if not name_only:
                 if not quiet:
-                    _logger('aliaxer ignoring file '
+                    _logger('Ignoring file '
                                     + filename + file_extension)
             continue
 
