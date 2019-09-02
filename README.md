@@ -59,9 +59,9 @@ usage: aliaxer [-h] [-a APPENDER APPENDER] [--append] [--compile]
 
 - Clone or fork/clone or download this repo as ZIP
 - Create the directory to contain the aliases files and grab its path.
-- Determine which file is your terminal sourcing for aliases. In Bash usually is ```~/.bashrc```, ```~/.zshrc``` for Zsh where that file is sourced. You may need to uncommend the lines with the import.
-- Make ```run.py``` executable by the system: ```chmod u+x run.py```
-- Run ```run.py``` script for the first time using the ```--setup``` switch.
+- Determine which file is used by your Terminal for sourcing aliases from. You can find that out in your Terminal configuration file: in Bash usually is ```~/.bashrc``` and ```~/.zshrc``` for Zsh. You may need to uncommend the lines with the import. For example, in Bash that file's path is ```~/.bash_aliases```
+- Make ```run.py``` executable by the system: ```chmod u+x ./run.py```
+- Run ```run.py``` script for the first time using the ```--setup``` switch: ```./run.py --setup```.
 - Close and re-open your Terminal or re-source your ```*rc``` file from the previous step so you can use the app. For better results, closing the Terminal session to get a fresh one is better because re-sourcing does not perform unaliasing.
 - The ```aliaxer``` command will then be available for you to summon Aliaxer. Check out its help ```aliaxer -h``` or just ```aliaxer``` to learn about all available options.
 - Optionally, you can create a ```remotes``` file for sourcing aliases from remotes files. Please see the *Using Remotes section* for instructions.
@@ -90,7 +90,7 @@ Please beware of the performance consequences on having 'too many' remotes sourc
 
 *Avoid using* remote sources of aliases that you don't control yourself or are not properly vetted by you. 
 
-You don't want any command running on your terminal that you are not certain of what it does.
+You don't want any command running on your Terminal that you are not certain of what it does.
 
 # Pro Tip
 
